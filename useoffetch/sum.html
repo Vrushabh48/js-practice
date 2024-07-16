@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sum Calculator</title>
+</head>
+<body>
+    <input class="first" type="text" placeholder="First Number" name="a"><br><br>
+    <input class="second" type="text" placeholder="Second Number" name="b"><br><br>
+    <button onclick="calculateSum()">Calculate Sum</button><br><br>
+
+    <h2 id="ans"></h2>
+
+    <script>
+        function calculateSum() {
+            const a = document.querySelector(".first").value;
+            const b = document.querySelector(".second").value;
+
+            fetch(`https://sum-server.100xdevs.com/sum?a=${a}&b=${b}`)
+            .then(function(response){
+                response.text()
+                .then(function(ans){
+                    document.getElementById("ans").innerHTML = ans;
+                })
+            })
+        }
+    </script>
+</body>
+</html>
